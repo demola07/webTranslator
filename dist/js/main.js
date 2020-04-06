@@ -33,3 +33,36 @@ getVoices();
 if (synth.onvoiceschanged !== undefined) {
   synth.onvoiceschanged = getVoices;
 }
+
+//Speak
+const speak = () => {
+  //check if speaking
+  if (synth.speaking) {
+    console.error('Aleady speaking...');
+    return;
+  }
+  if (textInput.value !== '') {
+    //Get speak text
+    const speakText = new SpeechSynthesisUtterance(textInput.value);
+
+    //speak end
+    speakText.onend = (e) => {
+      console.log('Done speaking');
+    };
+
+    //Speak error
+    speakText.onerror = (e) => {
+      console.error('Something went wrong...');
+    };
+
+    //Selected voice
+    const selectedVoice = voiceSelect.selectedOptions[0].getAttribute('data-name');
+
+    //Loop through voices
+    voices.forEach((voice) => {
+      if (voice.name === selectedVoice) {
+        speakText.voice = voice;
+      }
+    });
+  }
+};
