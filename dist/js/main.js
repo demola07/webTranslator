@@ -6,7 +6,7 @@ const textForm = document.querySelector('form');
 const textInput = document.querySelector('#text-input');
 const voiceSelect = document.querySelector('#voice-select');
 const rate = document.querySelector('#rate');
-const rateValue = document.querySelector('#voice-select');
+const rateValue = document.querySelector('#rate-value');
 const pitch = document.querySelector('#pitch');
 const pitchValue = document.querySelector('#pitch-value');
 
@@ -87,4 +87,7 @@ textForm.addEventListener('submit', (e) => {
 rate.addEventListener('change', (e) => (rateValue.textContent = rate.value));
 
 //Pitch value change
-rate.addEventListener('change', (e) => (pitchValue.textContent = pitch.value));
+pitch.addEventListener('change', (e) => (pitchValue.textContent = pitch.value));
+
+//voice select change
+voiceSelect.addEventListener('change', (e) => speak());
