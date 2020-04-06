@@ -85,3 +85,6 @@ textForm.addEventListener('submit', (e) => {
 
 //Rate value change
 rate.addEventListener('change', (e) => (rateValue.textContent = rate.value));
+
+//Pitch value change
+rate.addEventListener('change', (e) => (pitchValue.textContent = pitch.value));
