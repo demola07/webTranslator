@@ -9,6 +9,7 @@ const rate = document.querySelector('#rate');
 const rateValue = document.querySelector('#rate-value');
 const pitch = document.querySelector('#pitch');
 const pitchValue = document.querySelector('#pitch-value');
+const body = document.querySelector('body');
 
 //Init Voices array
 let voices = [];
@@ -42,12 +43,18 @@ const speak = () => {
     return;
   }
   if (textInput.value !== '') {
+    // Add background animation
+    body.style.background = '#141414 url(img/wave.gif)';
+    body.style.backgroundRepeat = 'repeat-x';
+    body.style.backgroundSize = '100% 100%';
+
     //Get speak text
     const speakText = new SpeechSynthesisUtterance(textInput.value);
 
     //speak end
     speakText.onend = (e) => {
       console.log('Done speaking');
+      body.style.background = '#141414';
     };
 
     //Speak error
