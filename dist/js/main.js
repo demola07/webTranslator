@@ -1,4 +1,4 @@
-//Init Speack Synth API
+//Init Speech Synth API
 const synth = window.speechSynthesis;
 
 //DOM Elements
@@ -14,7 +14,7 @@ const body = document.querySelector('body');
 //Init Voices array
 let voices = [];
 
-const getVoices = () => {
+const populateVoiceList = () => {
   voices = synth.getVoices();
 
   //Loop through voices  and create option for each one
@@ -30,9 +30,10 @@ const getVoices = () => {
     voiceSelect.appendChild(option);
   });
 };
-getVoices();
-if (synth.onvoiceschanged !== undefined) {
-  synth.onvoiceschanged = getVoices;
+
+populateVoiceList();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = populateVoiceList;
 }
 
 //Speak
@@ -67,6 +68,8 @@ const speak = () => {
 
     //Loop through voices
     voices.forEach((voice) => {
+      console.log(selectedVoice);
+
       if (voice.name === selectedVoice) {
         speakText.voice = voice;
       }
