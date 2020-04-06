@@ -64,5 +64,12 @@ const speak = () => {
         speakText.voice = voice;
       }
     });
+
+    //Set pitch and rate
+    speakText.rate = rate.value;
+    speakText.pitch = pitch.value;
+
+    //Speak
+    synth.speak(speakText);
   }
 };
